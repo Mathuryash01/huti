@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Cart - Agnihuti</title>
+  <link rel="stylesheet" href="cart.css" />
+  <style>
+    .cart-container {
+      max-width: 800px;
+      margin: 50px auto;
+      padding: 20px;
+      background: #fffefb;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    li {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid #ddd;
+      padding: 15px 0;
+    }
+
+    .item-info {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      text-align: left;
+    }
+
+    .item-info img {
+      width: 60px;
+      height: 60px;
+      object-fit: contain;
+      border-radius: 6px;
+    }
+
+    .item-name {
+      font-weight: bold;
+      color: #b33c00;
+    }
+
+    .qty-controls button {
+      padding: 5px 10px;
+      margin: 0 5px;
+      font-size: 16px;
+      background-color: #b33c00;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .total-price {
+      font-size: 18px;
+      font-weight: bold;
+      margin-top: 20px;
+    }
+
+    button.checkout, button.clear {
+      padding: 12px 20px;
+      margin-top: 20px;
+      background-color: #b33c00;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    button.clear {
+      background-color: #7a1e00;
+      margin-left: 10px;
+    }
+
+    a {
+      display: inline-block;
+      margin-top: 15px;
+      color: #b33c00;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="cart-container">
+    <h2>Your Cart</h2>
+    <ul id="full-cart-items"></ul>
+    <p class="total-price">Total: ₹<span id="full-cart-total">0</span></p>
+
+    <div>
+      <button class="checkout" onclick="proceedCheckout()">Proceed to Checkout</button>
+      <button class="clear" onclick="clearCart()">Clear Cart</button>
+    </div>
+
+    <a href="index.html">← Continue Shopping</a>
+  </div>
+
+  <script>
+    let cart = JSON.parse(localStorage.getItem("cartData") || "{}");
+
+    function updateFullCart() {
+      const list = document.getElementById("full-cart-items");
+      const totalElem = document.getElementById("full-cart-total");
+      let total = 0;
+      list.innerHTML = "";
+
+      if (Object.keys(cart).length === 0) {
+        list.innerHTML = "<p>Your cart is empty.</p>";
+        totalElem.textContent = "0";
+        return;
+      }
+
+      for (let name in cart) {
+        const { price, qty, img } = cart[name];
+        const itemTotal = price * qty;
+        total += itemTotal;
+
+        list.innerHTML += `
+          <li>
+            <div class="item-info">
+              <img src="${img}" alt="${name}" />
+              <div>
+                <div class="item-name">${name}</div>
+                <div>₹${price} × ${qty} = ₹${itemTotal}</div>
+              </div>
+            </div>
+            <div class="qty-controls">
+              <button onclick="changeQty('${name}', -1)">-</button>
+              ${qty}
+              <button onclick="changeQty('${name}', 1)">+</button>
+            </div>
+          </li>`;
+      }
+
+      totalElem.textContent = total;
+    }
+
+    function changeQty(name, delta) {
+      if (!cart[name]) return;
+      cart[name].qty += delta;
+      if (cart[name].qty <= 0) delete cart[name];
+      localStorage.setItem("cartData", JSON.stringify(cart));
+      updateFullCart();
+    }
+
+    function clearCart() {
+      if (confirm("Are you sure you want to clear the cart?")) {
+        cart = {};
+        localStorage.removeItem("cartData");
+        updateFullCart();
+      }
+    }
+
+    function proceedCheckout() {
+      const isLoggedIn = localStorage.getItem("isLoggedIn") === "true";
+      if (!isLoggedIn) {
+        alert("Please login to continue.");
+        window.location.href = "login.html";
+      } else {
+        alert("Proceeding to payment gateway...");
+        // Your checkout logic here
+      }
+    }
+
+    updateFullCart();
+  </script>
+
+</body>
+</html>

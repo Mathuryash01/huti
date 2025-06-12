@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Agnihuti Dhoopsticks</title>
+  <link rel="stylesheet" href="styles.css" />
+  
+</head>
+<body>
+
+  <header>
+    <div class="header-container">
+      <img src="logo.png" alt="Agnihuti Logo" class="logo" />
+      <h1>AGNIHUTI DHOOPSTICKS</h1>
+      <p class="tagline">हर पूजा में, हर वातावरण में</p>
+      <div class="cart-icon" onclick="location.href='cart.html'">
+        🛒<span id="cart-count">0</span>
+      </div>
+    </div>
+  </header>
+
+  <main class="product-row">
+    <!-- Product 1 -->
+    <div class="product-card" data-name="Rose Royale" data-price="50">
+      <img src="rose.jpg" alt="Rose" />
+      <div class="product-info">
+        <p>Rose Royale</p>
+        <p>MRP ₹50</p>
+        <button>Add to Cart</button>
+      </div>
+    </div>
+
+    <!-- Product 2 -->
+    <div class="product-card" data-name="Chandan Bliss" data-price="50">
+      <img src="chandan.jpg" alt="Chandan" />
+      <div class="product-info">
+        <p>Chandan Bliss</p>
+        <p>MRP ₹50</p>
+        <button>Add to Cart</button>
+      </div>
+    </div>
+
+    <!-- Product 3 -->
+    <div class="product-card" data-name="Sacred Havan" data-price="50">
+      <img src="havan.jpg" alt="Havan" />
+      <div class="product-info">
+        <p>Sacred Havan</p>
+        <p>MRP ₹50</p>
+        <button>Add to Cart</button>
+      </div>
+    </div>
+
+    <!-- Product 4 -->
+    <div class="product-card" data-name="Mogra Delight" data-price="50">
+      <img src="mogra.jpg" alt="Mogra" />
+      <div class="product-info">
+        <p>Mogra Delight</p>
+        <p>MRP ₹50</p>
+        <button>Add to Cart</button>
+      </div>
+    </div>
+
+    <!-- Product 5 -->
+    <div class="product-card" data-name="Guggal Myst" data-price="50">
+      <img src="guggal.jpg" alt="Guggal" />
+      <div class="product-info">
+        <p>Guggal Myst</p>
+        <p>MRP ₹50</p>
+        <button>Add to Cart</button>
+      </div>
+    </div>
+  </main>
+
+  <!-- Notification -->
+  <div id="notification" class="notification">Product has been added to cart</div>
+
+  <!-- Modal -->
+  <div id="imageModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <img id="modalImage" src="" alt="" />
+      <h3 id="modalProductName"></h3>
+      <p>MRP ₹<span id="modalProductPrice"></span></p>
+      <p>Quantity in Cart: <span id="modalQuantity">0</span></p>
+      <button id="modal-add-cart">Add to Cart</button>
+    </div>
+  </div>
+
+  <!-- Script -->
+  <script src="script.js"></script>
+</body>
+</html>

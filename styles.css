@@ -1,0 +1,241 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(to right, #fff3e0, #ffe0b2);
+}
+
+.header-container {
+  text-align: center;
+  padding: 20px;
+  background-color: #fff3e0;
+  position: relative;
+}
+
+.logo {
+  width: 120px;
+}
+
+h1 {
+  margin: 10px 0;
+  font-size: 2rem;
+  color: #b33c00;
+}
+
+.tagline {
+  font-style: italic;
+  color: #555;
+  font-size: 1.5rem;
+  animation: fadeInDown 1s ease-out;
+  text-align: center;
+  margin: 10px 0;
+}
+
+.cart-icon {
+  position: absolute;
+  right: 30px;
+  top: 30px;
+  font-size: 24px;
+  cursor: pointer;
+  color: #333;
+}
+
+#cart-count {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background-color: red;
+  color: white;
+  border-radius: 50%;
+  font-size: 12px;
+  padding: 2px 6px;
+}
+
+/* ✅ Product Card Grid */
+.product-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  padding: 30px 10px;
+  max-width: 100%;
+  margin: auto;
+}
+
+.product-card {
+  background-color: white;
+  border-radius: 12px;
+  width: 18%;
+  min-width: 180px;
+  box-shadow: 0 6px 14px rgba(0,0,0,0.15);
+  text-align: center;
+  transition: 0.3s;
+  cursor: pointer;
+  animation: fadeInUp 0.6s ease-in-out;
+  padding-bottom: 10px;
+}
+
+.product-card:hover {
+  transform: scale(1.03);
+}
+
+.product-card img {
+  display: block;
+  margin: auto;
+  width: 160px;
+  height: 160px;
+  object-fit: contain;
+  padding: 10px;
+}
+
+.product-info {
+  padding: 10px 0;
+}
+
+.product-card p {
+  font-weight: bold;
+  color: #000;
+  margin: 6px 0;
+}
+
+button {
+  background-color: #b33c00;
+  color: white;
+  border: none;
+  padding: 10px;
+  width: 90%;
+  margin: 10px auto;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* ✅ MODAL Responsive Fix */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 100;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.6);
+}
+
+.modal-content {
+  background-color: #fff;
+  margin: 80px auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 90vw;
+  max-width: 360px;
+  max-height: 90vh;
+  overflow-y: auto;
+  text-align: center;
+  border-radius: 10px;
+  position: relative;
+}
+
+.modal-content img {
+  width: 100%;
+  height: auto;
+  max-height: 250px;
+  object-fit: contain;
+  border-radius: 8px;
+  transition: transform 0.3s ease-in-out;
+}
+
+.close {
+  position: absolute;
+  right: 20px;
+  top: 10px;
+  font-size: 30px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* ✅ TOAST Notification */
+#notification {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #333;
+  color: white;
+  padding: 16px 24px;
+  border-radius: 8px;
+  font-size: 16px;
+  z-index: 1000;
+  display: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  text-align: center;
+}
+
+/* Cart Item */
+.cart-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.cart-img {
+  width: 50px;
+  height: 50px;
+  object-fit: contain;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+/* Animations */
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ✅ Responsive Adjustments */
+@media (max-width: 1100px) {
+  .product-card {
+    width: 30%;
+  }
+}
+
+@media (max-width: 700px) {
+  .product-card {
+    width: 90%;
+  }
+
+  .product-card img {
+    width: 160px;
+    height: 160px;
+  }
+
+  .modal-content {
+    margin: 60px auto;
+    width: 90%;
+    max-height: 80vh;
+  }
+
+  .modal-content img {
+    max-height: 200px;
+  }
+}

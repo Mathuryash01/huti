@@ -1,0 +1,86 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Segoe UI", sans-serif;
+  background: linear-gradient(120deg, #ffe7cc, #fff3e0);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-box {
+  background-color: #ffffff;
+  border-radius: 10px;
+  padding: 40px 30px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  max-width: 400px;
+  width: 100%;
+  text-align: center;
+}
+
+.login-box h2 {
+  color: #b33c00;
+  margin-bottom: 10px;
+}
+
+.subtitle {
+  font-size: 0.95rem;
+  color: #666;
+  margin-bottom: 20px;
+}
+
+.login-box form input {
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+}
+
+.login-box form button {
+  width: 100%;
+  padding: 12px;
+  background-color: #b33c00;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.or {
+  margin: 15px 0;
+  font-weight: bold;
+  color: #888;
+}
+
+.social-login .google-btn {
+  background-color: #fff;
+  color: #444;
+  border: 1px solid #ddd;
+  padding: 12px;
+  width: 100%;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.social-login .signup-link {
+  margin-top: 15px;
+  font-size: 0.9rem;
+  color: #444;
+}
+
+.social-login .signup-link a {
+  color: #b33c00;
+  text-decoration: none;
+  font-weight: bold;
+}
